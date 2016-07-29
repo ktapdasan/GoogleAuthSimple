@@ -1,0 +1,34 @@
+<html>
+<head>
+    <!-- Note: This APP RUNS Only on localhost domain if be transfered to other domains my Google Cloud Platform must be configured to set to a new or a sub domain - Ken  -->
+
+    <!-- Client ID is on the content tag it can be found on my account on Google Cloud Platform,
+    configurations can be found there, this app authenticates with google - Ken -->
+    <meta name="google-signin-client_id" content="186397944996-cf8pdf74qpj7dvleubue5a6ha9noget4.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript">
+    // On Clicked of SignIn data below from login user will be fetch as per user agreed
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Email: ' + profile.getEmail());
+    }
+    </script>
+    <script>
+    //Simple Signout - Ken
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+    </script>
+</head>
+<body>
+    <!-- Button sign in is from Google automatically synced when platform.js and g-signin2 is placed - Ken -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+</body>
+
+</html>
